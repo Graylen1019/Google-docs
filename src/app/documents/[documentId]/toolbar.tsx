@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+
 import { useState } from "react";
 import FontFamily from "@tiptap/extension-font-family";
 
@@ -53,8 +54,14 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { type Level } from "@tiptap/extension-heading";
 import { useEditorStore } from "@/store/use-editor-store";
-import { type ColorResult, CirclePicker, SketchPicker } from "react-color";
+import { type ColorResult, SketchPicker } from "react-color";
 import { Value } from "@radix-ui/react-select";
+
+interface ToolbarButtonProps {
+  onClick?: () => void;
+  isActive?: boolean;
+  icon: LucideIcon;
+}
 
 const LineHeightButton = () => {
   const { editor } = useEditorStore();
@@ -90,13 +97,14 @@ const LineHeightButton = () => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-1 flex flex-col gap-y-1 ">
-        {lineHeights.map(({ label, value}) => (
+        {lineHeights.map(({ label, value }) => (
           <button
             key={value}
             onClick={() => editor?.chain().focus().setLineHeight(value).run()}
             className={cn(
               "flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80",
-              editor?.getAttributes("paragraph").lineHeight === value && "bg-slate-200/80"
+              editor?.getAttributes("paragraph").lineHeight === value &&
+                "bg-slate-200/80"
             )}
           >
             <span className="text-sm">{label}</span>
@@ -575,12 +583,6 @@ const FontFamilyButton = () => {
   );
 };
 
-interface ToolbarButtonProps {
-  onClick?: () => void;
-  isActive?: boolean;
-  icon: LucideIcon;
-}
-
 const ToolbarButton = ({
   onClick,
   isActive,
@@ -678,6 +680,7 @@ export const Toolbar = () => {
       },
     ],
   ];
+  
   return (
     <div className="bg-[#F1F4F5] px-2.5 py-0.5 rounded-[24px] flex items-center gap-x-0.5 overflow-x-auto">
       {sections[0].map((item) => (
