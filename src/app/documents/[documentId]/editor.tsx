@@ -17,7 +17,8 @@ import TextStyle from "@tiptap/extension-text-style";
 import { Color } from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
 import Link from "@tiptap/extension-link";
-import TextAlign from "@tiptap/extension-text-align"
+import TextAlign from "@tiptap/extension-text-align";
+import { lineHeightExtension } from "@/extensions/line-height";
 
 import { FontSizeExtension } from "@/extensions/font-size";
 
@@ -58,18 +59,22 @@ export const Editor = () => {
     },
     extensions: [
       StarterKit,
+      lineHeightExtension.configure({
+        types: ["heading", "paragraph"],
+        defaultLineHeight: "normal",
+      }),
       FontSizeExtension,
       Link.configure({
         openOnClick: false,
         autolink: true,
-        defaultProtocol: "https"
+        defaultProtocol: "https",
       }),
       Color,
       Highlight.configure({
         multicolor: true,
       }),
       TextAlign.configure({
-        types: ["heading", "paragraph"]
+        types: ["heading", "paragraph"],
       }),
       TextStyle,
       Underline,
