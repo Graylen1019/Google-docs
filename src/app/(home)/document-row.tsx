@@ -28,7 +28,7 @@ export const Documentrow = ({ document }: DocumentRowProps) => {
         ) : (
           <CircleUserIcon className="size-4" />
         )}
-        {document.organizationId ? "Orginazation" : "Personal"}
+        {document.organizationId ? "Organazation" : "Personal"}
       </TableCell>
       <TableCell className="text-muted-foreground hidden md:table-cell">
         {format(new Date(document._creationTime), "MMM dd, yyyy")}
