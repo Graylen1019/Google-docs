@@ -9,7 +9,7 @@ const Home = () => {
   const documents = useQuery(api.documents.get);
 
   if (documents === undefined) {
-    return <p>loading...</p>;
+    return <p>loading...</p>
   }
   return (
     <div className="min-h-screen flex flex-col">
