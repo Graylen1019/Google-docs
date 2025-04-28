@@ -50,6 +50,8 @@ export const TemplateGallery = () => {
               );
             })}
           </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
         </Carousel>
       </div>
     </div>
