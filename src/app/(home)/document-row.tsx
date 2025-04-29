@@ -10,7 +10,7 @@ interface DocumentRowProps {
   document: Doc<"documents">;
 }
 
-export const Documentrow = ({ document }: DocumentRowProps) => {
+export const DocumentRow = ({ document }: DocumentRowProps) => {
   const router = useRouter();
 
   return (
@@ -28,7 +28,7 @@ export const Documentrow = ({ document }: DocumentRowProps) => {
         ) : (
           <CircleUserIcon className="size-4" />
         )}
-        {document.organizationId ? "Organazation" : "Personal"}
+        {document.organizationId ? "Organization" : "Personal"}
       </TableCell>
       <TableCell className="text-muted-foreground hidden md:table-cell">
         {format(new Date(document._creationTime), "MMM dd, yyyy")}

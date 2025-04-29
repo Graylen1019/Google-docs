@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { LoaderIcon } from "lucide-react";
-import { Documentrow } from "./document-row";
+import { DocumentRow } from "./document-row";
 import { Button } from "@/components/ui/button";
 
 interface DocumentsTableProps {
@@ -54,7 +54,7 @@ export const DocumentsTable = ({
           ) : (
             <TableBody>
               {documents.map((document) => (
-                <Documentrow key={document._id} document={document} />
+                <DocumentRow key={document._id} document={document} />
               ))}
             </TableBody>
           )}
