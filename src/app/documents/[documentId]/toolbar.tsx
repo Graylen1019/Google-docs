@@ -56,6 +56,7 @@ import { type Level } from "@tiptap/extension-heading";
 import { useEditorStore } from "@/store/use-editor-store";
 import { type ColorResult, SketchPicker } from "react-color";
 import { Value } from "@radix-ui/react-select";
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 
 interface ToolbarButtonProps {
   onClick?: () => void;
@@ -603,8 +604,8 @@ const ToolbarButton = ({
 
 export const Toolbar = () => {
   const { editor } = useEditorStore();
+  (console.log(editor));
 
-  console.log("Toolbar Editor", { editor });
 
   const sections: {
     label: string;
@@ -664,8 +665,8 @@ export const Toolbar = () => {
       {
         label: "Comment",
         icon: MessageSquarePlusIcon,
-        onClick: () => console.log("TODO: Comment"),
-        isActive: false, //TODO: enable Function
+        onClick: () => editor?.chain().focus().addPendingComment().run(), 
+        isActive: editor?.isActive(useLiveblocksExtension),
       },
       {
         label: "List Todo",

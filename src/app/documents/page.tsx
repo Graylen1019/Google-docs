@@ -1,7 +1,7 @@
 const Page = () => {
   return (
     <div>
-      <p>Fuck</p>
+      <p>awdawd</p>
     </div>
   );
 };
