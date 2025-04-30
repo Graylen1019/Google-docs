@@ -20,7 +20,7 @@ import Link from "@tiptap/extension-link";
 import TextAlign from "@tiptap/extension-text-align";
 import { lineHeightExtension } from "@/extensions/line-height";
 
-import { FloatingComposer, FloatingThreads, useLiveblocksExtension } from "@liveblocks/react-tiptap"
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap"
 
 import { FontSizeExtension } from "@/extensions/font-size";
 import { Ruler } from "./ruler";

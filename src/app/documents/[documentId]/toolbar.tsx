@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 
 import { useState } from "react";
-import FontFamily from "@tiptap/extension-font-family";
 
 import {
   AlignCenterIcon,
@@ -55,8 +54,6 @@ import { Separator } from "@/components/ui/separator";
 import { type Level } from "@tiptap/extension-heading";
 import { useEditorStore } from "@/store/use-editor-store";
 import { type ColorResult, SketchPicker } from "react-color";
-import { Value } from "@radix-ui/react-select";
-import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 
 interface ToolbarButtonProps {
   onClick?: () => void;
@@ -604,8 +601,6 @@ const ToolbarButton = ({
 
 export const Toolbar = () => {
   const { editor } = useEditorStore();
-  (console.log(editor));
-
 
   const sections: {
     label: string;
@@ -666,7 +661,7 @@ export const Toolbar = () => {
         label: "Comment",
         icon: MessageSquarePlusIcon,
         onClick: () => editor?.chain().focus().addPendingComment().run(), 
-        isActive: editor?.isActive(useLiveblocksExtension),
+        isActive: editor?.isActive("liveblocksCommentMark"),
       },
       {
         label: "List Todo",
