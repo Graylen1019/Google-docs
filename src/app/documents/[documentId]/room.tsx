@@ -44,7 +44,7 @@ export function Room({ children }: { children: ReactNode }) {
 
         const response = await fetch(endpoint, {
           method: "POST",
-          body: JSON.stringify({  room }),
+          body: JSON.stringify({ room }),
         });
 
         return await response.json();
@@ -67,13 +67,16 @@ export function Room({ children }: { children: ReactNode }) {
       }}
       resolveRoomsInfo={async ({ roomIds }) => {
         const documents = await getDocuments(roomIds as Id<"documents">[]);
-        return documents.map((document) =>({
+        return documents.map((document) => ({
           id: document.id,
           name: document.name,
         }));
       }}
     >
-      <RoomProvider id={params.documentId as string}>
+      <RoomProvider
+        id={params.documentId as string}
+        initialStorage={{ leftMargin: 56, rightMargin: 56 }}
+      >
         <ClientSideSuspense
           fallback={<FullscreenLoader label="Room Loading..." />}
         >
