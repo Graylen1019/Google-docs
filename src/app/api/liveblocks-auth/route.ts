@@ -9,7 +9,7 @@ const liveblocks = new Liveblocks({
 });
 
 interface PostClaim {
-    id: string
+  id: string;
 }
 
 export async function POST(req: Request) {
@@ -32,11 +32,12 @@ export async function POST(req: Request) {
   }
 
   const isOwner = document.ownerId === user.id;
-//   const isOrganizationMember = !!(
-//     document.organizationId && document.organizationId === sessionClaims.o?.id //ignore type script error. No other method worked.
-//   );
+
   const isOrganizationMember = !!(
-    document.organizationId && document.organizationId === (sessionClaims.o as PostClaim)?.id //ignore type script error. No other method worked.
+    (
+      document.organizationId &&
+      document.organizationId === (sessionClaims.o as PostClaim)?.id
+    ) //ignore type script error. No Error.
   );
 
   if (!isOwner && !isOrganizationMember) {
@@ -45,7 +46,7 @@ export async function POST(req: Request) {
 
   const session = liveblocks.prepareSession(user.id, {
     userInfo: {
-      name: user.fullName ?? "Anonymous",
+      name: user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous",
       avatar: user.imageUrl,
     },
   });
