@@ -53,7 +53,7 @@ export const TemplateGallery = () => {
                   >
                     <button
                       disabled={isCreating}
-                      onClick={() => onTemplateClick(template.label, "")} //TODO: ADD Initial Content
+                      onClick={() => onTemplateClick(template.label, template.initialContent)} //TODO: ADD Initial Content
                       style={{
                         backgroundImage: `url(${template.imageUrl})`,
                         backgroundSize: "contain",
